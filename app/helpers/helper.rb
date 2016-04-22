@@ -9,4 +9,8 @@ helpers do
     (questions_array.sort_by &:comment_count).reverse
   end
 
+  def sort_newest(questions_array)
+    (questions_array.sort_by &:created_at).reverse
+  end
+
 end

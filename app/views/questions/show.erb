@@ -27,18 +27,19 @@
 	<hr>
 
 	<!-- New Comment Link -->
-	<div class="col-md-3 text-center">
-	<p><a href="/questions/<%= @question.id %>/comments/new">New Comment</a></p>
+	<div id="comment-box">
+		<div class="col-md-3 text-center" id="question_comment_button">
+		<p><a href="/questions/<%= @question.id %>/comments/new">New Comment</a></p>
+		</div>
+
+		<!-- Question Comments Display -->
+		<div class="col-md-6">
+		<% @question.comments.each do |comment| %>
+		<p><%= comment.body %></p>
+		<% end %>
+		</div>
 	</div>
 
-	<!-- Question Comments Display -->
-	<div class="col-md-6">
-	<% @question.comments.each do |comment| %>
-	<p><%= comment.body %></p>
-	<% end %>
-	</div>
-
-	</div>
 	<hr>
 
 
@@ -79,7 +80,9 @@
 		<% end %>
 		<hr>
 		<!-- New Answer Comment Link -->
+		<div id="answer_comment_button">
 		<p><a href="/answers/<%= answer.id %>/comments/new">New Comment</a></p>
+		</div>
 
 	<% end %>
 
@@ -102,6 +105,5 @@
   </form>
 
   <%= @errors if @errors %>
-</div>
 </div>
 

@@ -27,7 +27,12 @@ end
 get '/questions/:id/comments/new' do
   @type = "Question"
   @id = params[:id]
+  if request.xhr?
+    return erb :_comment_form, layout: false, locals: {id: @id, type: @type}
+    # return "Hello"
+  else
   erb :'comments/new'
+end
 end
 
 get '/answers/:id/comments/new' do

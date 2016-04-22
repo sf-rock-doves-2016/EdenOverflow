@@ -1,8 +1,8 @@
-some simple and cool JS you can use for forms
-
 $(document).ready(function() {
 
     tabSelectListener();
+    questionCommentButtonListener();
+    // answerCommentButtonListener();
 
 
 
@@ -26,4 +26,36 @@ $(document).ready(function() {
 
   });
 };
+
+  var questionCommentButtonListener = function(){
+    $('#question_comment_button').on('click', function(event){
+      event.preventDefault();
+      console.log($(this).children().children().attr('href'))
+
+      $.ajax({
+        url: $(this).children().children().attr('href'),
+        method: 'get'
+      }).done(function(response) {
+
+        $("#comment-box").prepend(response);
+        $("#question_comment_button").hide();
+
+      }).fail(function(response) {
+        console.log("whoops")
+      })
+    })
+  }
+
+  // var answerCommentButtonListener = function(){
+  //   $('#answer_comment_button').on('click', function(event){
+  //     event.preventDefault();
+  //     $.ajax({
+  //       url: $(this).attr('href'),
+  //       method: 'get'
+  //     }).done(function(response) {
+  //       console.log(response)
+  //     })
+  //   })
+  // }
+
 

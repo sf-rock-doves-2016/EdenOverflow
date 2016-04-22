@@ -13,7 +13,7 @@
 		<input type='hidden' name='vote[votable_type]' value="Question">
 		<input type='hidden' name='vote[count]' value="1">
 		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
-		<button type="button" class="btn btn-default btn-lg btn-block" width="20" > Vote Up! </button>
+		<button class="btn btn-default btn-lg btn-block"> Vote Up! </button>
 	</form>
 		<span><%= Vote.where(votable_id: @question.id, votable_type: "Question").sum(:count) %></span>
 	<form action='/votes' method='post'>
@@ -21,7 +21,7 @@
 		<input type='hidden' name='vote[votable_type]' value="Question">
 		<input type='hidden' name='vote[count]' value="-1">
 		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
-		<button type="button" class="btn btn-default btn-lg btn-block"> Vote Down! </button>
+		<button class="btn btn-default btn-lg btn-block"> Vote Down! </button>
 	</form>
 	</div>
 	<hr>
@@ -58,7 +58,7 @@
 				<input type='hidden' name='vote[votable_type]' value="Answer">
 				<input type='hidden' name='vote[count]' value="1">
 				<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
-				<button type="button" class="btn btn-default btn-lg btn-block" width="20" > Vote Up! </button>
+				<button class="btn btn-default btn-lg btn-block"> Vote Up! </button>
 			</form>
 
 			<span><%= Vote.where(votable_id: answer.id, votable_type: "Answer").sum(:count) %></span>
@@ -67,13 +67,9 @@
 				<input type='hidden' name='vote[votable_type]' value="Answer">
 				<input type='hidden' name='vote[count]' value="-1">
 				<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
-				<button type="button" class="btn btn-default btn-lg btn-block"> Vote Down! </button>
+				<button class="btn btn-default btn-lg btn-block"> Vote Down! </button>
 			</form>
 		</div>
-
-
-
-
 
 
 		<hr>

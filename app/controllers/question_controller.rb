@@ -2,6 +2,7 @@ get '/questions' do
   @questions = Question.all
   @sorted_questions = sort_ratings(@questions)
   @sorted_questions_comments = sort_comments(@questions)
+  @newest_questions = sort_newest(@questions)
 	erb :'questions/index'
 end
 

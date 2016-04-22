@@ -1,11 +1,12 @@
 <div class="container">
 	<h1><%= @question.title %></h1>
+	<div class="col-md-3 text-center">
 	<form action='/votes' method='post'>
 		<input type='hidden' name='vote[votable_id]' value='<%= @question.id%>'>
 		<input type='hidden' name='vote[votable_type]' value="Question">
 		<input type='hidden' name='vote[count]' value="1">
 		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
-		<button class="">Up</button>
+		<button type="button" class="btn btn-default btn-lg btn-block" width="20" > Vote Up! </button>
 	</form>
 		<span><%= Vote.where(votable_id: @question.id, votable_type: "Question").sum(:count) %></span>
 	<form action='/votes' method='post'>
@@ -13,8 +14,9 @@
 		<input type='hidden' name='vote[votable_type]' value="Question">
 		<input type='hidden' name='vote[count]' value="-1">
 		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
-		<button class="">Down</button>
+		<button type="button" class="btn btn-default btn-lg btn-block"> Vote Down! </button>
 	</form>
+	</div>
 	<p><%= @question.body %></p>
 	<p><%= @author.username %></p>
 	<% @question.comments.each do |comment| %>

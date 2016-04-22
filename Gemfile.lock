@@ -57,6 +57,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    schwarzefaker (0.0.5)
     shotgun (0.9.1)
       rack (>= 1.0)
     sinatra (1.4.7)
@@ -92,6 +93,7 @@ DEPENDENCIES
   rack-flash3
   rake
   rspec
+  schwarzefaker
   shotgun
   sinatra
   sinatra-contrib

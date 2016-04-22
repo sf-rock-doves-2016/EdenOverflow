@@ -26,6 +26,7 @@ get '/users/:id' do
   end
   @user = User.find(params[:id])
   if @user
+    @questions = @user.questions
     erb :'/users/user_index'
   else
     session[:errors] = @user.errors.full_messages[0]

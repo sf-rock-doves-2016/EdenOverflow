@@ -1,9 +1,9 @@
+
 $(document).ready(function() {
 
     tabSelectListener();
     questionCommentButtonListener();
     // answerCommentButtonListener();
-
 
 
 });

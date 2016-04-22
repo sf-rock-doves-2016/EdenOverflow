@@ -1,5 +1,5 @@
 
 
 get '/' do
-  redirect '/templates'
+  redirect '/questions'
 end

@@ -3,6 +3,7 @@ $(document).ready(function() {
 
     tabSelectListener();
     questionCommentButtonListener();
+    // questionCommentSubmitListener();
     // answerCommentButtonListener();
 
 
@@ -45,6 +46,12 @@ $(document).ready(function() {
       })
     })
   }
+
+  // var questionCommentSubmitListener = function(){
+  //   $('#comment-box > form > input[type="submit"]:nth-child(8)').on("click", function(e){
+  //     e.preventDefault();
+  //   })
+  // }
 
   // var answerCommentButtonListener = function(){
   //   $('#answer_comment_button').on('click', function(event){

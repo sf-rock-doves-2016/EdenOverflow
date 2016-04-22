@@ -1,5 +1,6 @@
 get '/questions' do
 	@questions = Question.all
+ @sorted_questions = sort_ratings(@questions)
 	erb :'questions/index'
 end
 

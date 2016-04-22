@@ -1,10 +1,29 @@
 // some simple and cool JS you can use for forms
 
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+
+    tabSelectListener();
+
 
 
 });
+
+  var tabSelectListener = function(){
+    $('.tabs li a').on('click', function(event) {
+      event.preventDefault();
+      $('.active').removeClass('active');
+      $(this).parent().addClass('active');
+      if ($(this).attr("id") == "current"){ //detection for current tab
+     return
+     // returns tab content
+    }
+    else{
+    $(".tab-content").hide(); //Hide all content
+    $(".tabs li").attr("id",""); //Reset id's
+    $(this).parent().attr("id","current"); // Activate this
+    $( $(this).attr('href')).fadeIn();
+  }
+
+  });
+};
 

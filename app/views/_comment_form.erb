@@ -1,6 +1,6 @@
 <form action='/comments' method='post'>
   <label>Type Comment Here:</label><br>
-  <textarea cols="30" rows="15"></textarea><br>
+  <textarea name="comment[body]" rows="5" cols="75"></textarea><br>
   <input type='hidden' name='comment[commentable_id]' value='<%= id %>'>
   <input type='hidden' name='comment[commentable_type]' value="<%= type %>">
   <input type='hidden' name='comment[user_id]' value='<%= session[:user_id] %>' >

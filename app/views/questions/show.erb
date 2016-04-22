@@ -20,12 +20,7 @@
 	<% @question.comments.each do |comment| %>
 	<p><%= comment.body %></p>
 	<% end %>
-	<form action='/comments' method='post'>
-		<input type='hidden' name='comment[commentable_id]' value='<%= @question.id%>'>
-		<input type='hidden' name='comment[commentable_type]' value="Question">
-		<input type='hidden' name='comment[user_id]' value='<%= session[:user_id] %>' >
-		<input type='submit' value="New Comment">
-	</form>
+	<p><a href="/questions/<%= @question.id %>/comments/new">New Comment</a></p>
 	<hr>
 
 
@@ -50,13 +45,8 @@
 	<% answer.comments.each do |comment| %>
 	<p><%= comment.body %></p>
 	<% end %>
-	<form action='/comments' method='post'>
-		<input type='hidden' name='comment[commentable_id]' value='<%= answer.id%>'>
-		<input type='hidden' name='comment[commentable_type]' value="Answer">
-		<input type='hidden' name='comment[user_id]' value='<%= session[:user_id] %>' >
-		<input type='submit' value="New Comment">
-	</form>
+	<p><a href="/answers/<%= answer.id %>/comments/new">New Comment</a></p>
 	</span>
-		<% end %>
+	<% end %>
 </div>
 

@@ -17,7 +17,9 @@
 	</form>
 	<p><%= @question.body %></p>
 	<p><%= @author.username %></p>
-	<p><%= @question.comments.all %></p>
+	<% @question.comments.each do |comment| %>
+	<p><%= comment.body %></p>
+	<% end %>
 	<form action='/comments' method='post'>
 		<input type='hidden' name='comment[commentable_id]' value='<%= @question.id%>'>
 		<input type='hidden' name='comment[commentable_type]' value="Question">
@@ -45,7 +47,9 @@
 	</form>
 	<p><%= answer.body %></p>
 	<p><%= User.find(answer.user_id).username %></p>
-	<p><%= answer.comments.all %></p>
+	<% answer.comments.each do |comment| %>
+	<p><%= comment.body %></p>
+	<% end %>
 	<form action='/comments' method='post'>
 		<input type='hidden' name='comment[commentable_id]' value='<%= answer.id%>'>
 		<input type='hidden' name='comment[commentable_type]' value="Answer">

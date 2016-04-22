@@ -1,3 +1,4 @@
+
 <div>
 		<% @questions.each do |question| %>
 			<p><a href="/questions/<%=question.id %>"><%= question.body %></a></p>
@@ -5,3 +6,4 @@
 			<p>Votes: <%= question.votes  %></p>
 		<% end %>
 </div>
+

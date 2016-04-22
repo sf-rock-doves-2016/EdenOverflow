@@ -1,0 +1,13 @@
+<div class="myerrormessages">
+  <% if session[:success] %>
+    <div class="alert alert-success">
+      <strong>Success!</strong> <%= session[:success] %>
+    </div>
+    <% session[:success] = nil %>
+  <% elsif session[:errors] %>
+    <div class="alert alert-danger">
+      <strong>Errors!</strong> <%= session[:errors] %>
+    </div>
+    <% session[:errors] = nil %>
+  <% end %>
+</div>

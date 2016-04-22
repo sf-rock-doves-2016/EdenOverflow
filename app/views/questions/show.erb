@@ -1,5 +1,12 @@
-<div class="container">
+<!-- Question Display -->
+<div id="question_view" class="container">
 	<h1><%= @question.title %></h1>
+	<hr>
+	<div class="col-md-9">
+	<p><%= @question.body %></p>
+	<h4><%= @author.username %></h4>
+	</div>
+
 	<div class="col-md-3 text-center">
 	<form action='/votes' method='post'>
 		<input type='hidden' name='vote[votable_id]' value='<%= @question.id%>'>
@@ -17,40 +24,76 @@
 		<button type="button" class="btn btn-default btn-lg btn-block"> Vote Down! </button>
 	</form>
 	</div>
-	<p><%= @question.body %></p>
-	<p><%= @author.username %></p>
+	<hr>
+
+	<!-- New Comment Link -->
+	<div class="col-md-3 text-center">
+	<p><a href="/questions/<%= @question.id %>/comments/new">New Comment</a></p>
+	</div>
+
+	<!-- Question Comments Display -->
+	<div class="col-md-6">
 	<% @question.comments.each do |comment| %>
 	<p><%= comment.body %></p>
 	<% end %>
-	<p><a href="/questions/<%= @question.id %>/comments/new">New Comment</a></p>
+	</div>
+
+	</div>
 	<hr>
 
-	<span> <% @question.answers.each do |answer| %>
-	<form action='/votes' method='post'>
-		<input type='hidden' name='vote[votable_id]' value='<%= answer.id%>'>
-		<input type='hidden' name='vote[votable_type]' value="Answer">
-		<input type='hidden' name='vote[count]' value="1">
-		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
-		<button class="">Up</button>
-	</form>
-		<span><%= Vote.where(votable_id: answer.id, votable_type: "Answer").sum(:count) %></span>
-	<form action='/votes' method='post'>
-		<input type='hidden' name='vote[votable_id]' value='<%= answer.id%>'>
-		<input type='hidden' name='vote[votable_type]' value="Answer">
-		<input type='hidden' name='vote[count]' value="-1">
-		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
-		<button class="">Down</button>
-	</form>
-	<p><%= answer.body %></p>
-	<p><%= User.find(answer.user_id).username %></p>
-	<% answer.comments.each do |comment| %>
-	<p><%= comment.body %></p>
-	<% end %>
-	<p><a href="/answers/<%= answer.id %>/comments/new">New Comment</a></p>
-	</span>
+
+
+	<!--Each Answer Display -->
+	<div id="answers_view" class="container">
+	<% @question.answers.each do |answer| %>
+
+		<div class="col-md-9">
+			<p><%= answer.body %></p>
+			<h5><%= User.find(answer.user_id).username %></h5>
+		</div>
+
+		<div class="col-md-3 text-center">
+			<form action='/votes' method='post'>
+				<input type='hidden' name='vote[votable_id]' value='<%= answer.id%>'>
+				<input type='hidden' name='vote[votable_type]' value="Answer">
+				<input type='hidden' name='vote[count]' value="1">
+				<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
+				<button type="button" class="btn btn-default btn-lg btn-block" width="20" > Vote Up! </button>
+			</form>
+
+			<span><%= Vote.where(votable_id: answer.id, votable_type: "Answer").sum(:count) %></span>
+			<form action='/votes' method='post'>
+				<input type='hidden' name='vote[votable_id]' value='<%= answer.id%>'>
+				<input type='hidden' name='vote[votable_type]' value="Answer">
+				<input type='hidden' name='vote[count]' value="-1">
+				<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
+				<button type="button" class="btn btn-default btn-lg btn-block"> Vote Down! </button>
+			</form>
+		</div>
+
+
+
+
+
+
+		<hr>
+			<!-- Answer Comments Display -->
+		<% answer.comments.each do |comment| %>
+			<p><%= comment.body %></p>
+		<% end %>
+		<hr>
+		<!-- New Answer Comment Link -->
+		<p><a href="/answers/<%= answer.id %>/comments/new">New Comment</a></p>
 
 	<% end %>
 
+	<hr>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<hr>
 	<form id="new-answer-form" method='post' action='/answers'>
 		<input type='hidden' name='answer[user_id]' value='<%=session[:user_id] %>'>
 		<input type='hidden' name='answer[question_id]' value='<%= @question.id%>'>
@@ -63,6 +106,6 @@
   </form>
 
   <%= @errors if @errors %>
-
+</div>
 </div>
 

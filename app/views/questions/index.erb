@@ -10,7 +10,7 @@
 		<% @questions.each do |question| %>
 			<p><a href="/questions/<%=question.id %>"><%= question.title %></a></p>
 			<p>Answers: <%= question.answers.length  %></p>
-			<p>Votes: <%= question.votes  %></p>
+			<p>Votes: <%= question.votes.sum(:count)  %></p>
 		<% end %>
 </div>
 

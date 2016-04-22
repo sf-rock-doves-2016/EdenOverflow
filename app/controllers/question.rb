@@ -5,6 +5,7 @@ end
 
 get '/questions/:id' do 
 	@question = Question.find(params[:id])
+	@author = User.find(@question.id)
 	erb :'questions/show'
 end
 

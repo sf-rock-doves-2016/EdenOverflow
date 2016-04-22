@@ -1,35 +1,85 @@
 <br>
 <br>
+<div class="container">
+<div class="row">
+<h1 class="text-center">Questions</h1>
 <ul class="tabs">
         <li class="active"><a href="#new">New</a></li>
         <li><a href="#popular">Popular</a></li>
         <li><a href="#most_commented">Most Commented</a></li>
     </ul>
-
+<br>
+<br>
+<br>
 <div class="content" id="new">
 		<% @questions.each do |question| %>
-			<p><a href="/questions/<%=question.id %>"><%= question.title %></a></p>
-			<p>Answers: <%= question.answers.length  %></p>
-			<p>Votes: <%= question.votes.sum(:count)  %></p>
-		<% end %>
+    <div class="list-group">
+      <a href="/questions/<%=question.id %>" class="list-group-item active">
+      <h2 class="list-group-item-heading"><%= question.title %> </h2>
+      <div class="col-md-3">
+      <% answers_count = question.answers.count %>
+      <h2><%= answers_count %> <small> answers </small></h2>
+      </div>
+			<div class="col-md-3">
+      <% vote_count = Vote.where(votable_id: "#{question.id}", votable_type: "Question").count  %>
+      <h2><%= vote_count %> <small> votes </small></h2>
+      </div>
+      <div class="col-md-3">
+      <% rating =Vote.where(votable_id: 1, votable_type: "Question").sum(:count)%>
+      <h2><%= rating %> <small> rating </small></h2>
+      </div>
+		</a>
+    </div>
+    <% end %>
 </div>
 
 <div class="content" id="popular">
 
     <% @sorted_questions.each do |question| %>
-      <p><a href="/questions/<%=question.id %>"><%= question.title %></a></p>
-      <p>Answers: <%= question.answers.length  %></p>
-      <p>Votes: <%= question.votes  %></p>
+      <div class="list-group">
+      <a href="/questions/<%=question.id %>" class="list-group-item active">
+      <h2 class="list-group-item-heading"><%= question.title %> </h2>
+      <div class="col-md-3">
+      <% answers_count = question.answers.count %>
+      <h2><%= answers_count %> <small> answers </small></h2>
+      </div>
+      <div class="col-md-3">
+      <% vote_count = Vote.where(votable_id: "#{question.id}", votable_type: "Question").count  %>
+      <h2><%= vote_count %> <small> votes </small></h2>
+      </div>
+      <div class="col-md-3">
+      <% rating =Vote.where(votable_id: 1, votable_type: "Question").sum(:count)%>
+      <h2><%= rating %> <small> rating </small></h2>
+      </div>
+    </a>
+    </div>
     <% end %>
 </div>
 
 
 <div class="content" id="most_commented">
-    <% @questions.each do |question| %>
-      <p><a href="/questions/<%=question.id %>"><%= question.title %></a></p>
-      <p>Answers: <%= question.answers.length  %></p>
-      <p>Votes: <%= question.votes  %></p>
+    <% @sorted_questions_comments.each do |question| %>
+      <div class="list-group">
+      <a href="/questions/<%=question.id %>" class="list-group-item active">
+      <h2 class="list-group-item-heading"><%= question.title %> </h2>
+      <div class="col-md-3">
+      <% answers_count = question.answers.count %>
+      <h2><%= answers_count %> <small> answers </small></h2>
+      </div>
+      <div class="col-md-3">
+      <% vote_count = Vote.where(votable_id: "#{question.id}", votable_type: "Question").count  %>
+      <h2><%= vote_count %> <small> votes </small></h2>
+      </div>
+      <div class="col-md-3">
+      <% rating =Vote.where(votable_id: 1, votable_type: "Question").sum(:count)%>
+      <h2><%= rating %> <small> rating </small></h2>
+      </div>
+    </a>
+    </div>
     <% end %>
+</div>
+
+</div>
 </div>
 
 

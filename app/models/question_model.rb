@@ -10,4 +10,8 @@ class Question < ActiveRecord::Base
     Vote.where(votable_id: self.id, votable_type: "Question").sum(:count)
   end
 
+  def comment_count
+    self.comments.count
+  end
+
 end

@@ -18,7 +18,7 @@ $(document).ready(function() {
      // returns tab content
     }
     else{
-    $(".tab-content").hide(); //Hide all content
+    $(".content").hide(); //Hide all content
     $(".tabs li").attr("id",""); //Reset id's
     $(this).parent().attr("id","current"); // Activate this
     $( $(this).attr('href')).fadeIn();

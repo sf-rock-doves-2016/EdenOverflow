@@ -20,7 +20,7 @@
 
     <% @questions.each do |question|  %>
         <div class="list-group">
-          <a href="#" class="list-group-item active">
+          <a href="/questions/<%=question.id %>" class="list-group-item active">
                     <h2 class="list-group-item-heading"><%= question.title %> </h2>
                     <div class="col-md-3">
                     <% answers_count = question.answers.count %>

@@ -1,9 +1,12 @@
 get '/questions' do 
 	@questions = Question.all
-	erb :index
+	erb :'questions/index'
 end
 
 get '/questions/:id' do 
-	":D"
+	@question = Question.find(params[:id])
+	erb :'questions/show'
 end
+
+
 

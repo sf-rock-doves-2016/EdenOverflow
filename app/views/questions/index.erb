@@ -1,9 +1,35 @@
+<br>
+<br>
+<ul class="tabs">
+        <li class="active"><a href="#new">New</a></li>
+        <li><a href="#popular">Popular</a></li>
+        <li><a href="#most_commented">Most Commented</a></li>
+    </ul>
 
-<div>
+<div class="content" id="new">
 		<% @questions.each do |question| %>
 			<p><a href="/questions/<%=question.id %>"><%= question.title %></a></p>
 			<p>Answers: <%= question.answers.length  %></p>
 			<p>Votes: <%= question.votes.sum(:count)  %></p>
 		<% end %>
 </div>
+
+<div class="content" id="popular">
+
+    <% @sorted_questions.each do |question| %>
+      <p><a href="/questions/<%=question.id %>"><%= question.title %></a></p>
+      <p>Answers: <%= question.answers.length  %></p>
+      <p>Votes: <%= question.votes  %></p>
+    <% end %>
+</div>
+
+
+<div class="content" id="most_commented">
+    <% @questions.each do |question| %>
+      <p><a href="/questions/<%=question.id %>"><%= question.title %></a></p>
+      <p>Answers: <%= question.answers.length  %></p>
+      <p>Votes: <%= question.votes  %></p>
+    <% end %>
+</div>
+
 

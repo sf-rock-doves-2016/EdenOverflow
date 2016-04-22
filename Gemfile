@@ -20,6 +20,7 @@ gem 'sinatra-flash'
 gem 'pry-byebug'
 
 gem 'pry'
+gem 'pry-byebug'
 
 gem 'shotgun'
 gem 'schwarzefaker'

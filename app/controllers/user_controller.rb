@@ -1,3 +1,4 @@
+#new user request
 get '/users/new' do
 	erb :'/users/user_new'
 end
@@ -17,12 +18,6 @@ post '/users' do
 	end
 end
 
-#get edit page
-# get '/users/:id/edit' do
-# 	@user = User.find(params[:id])
-# 	erb :'/users/user_edit'
-# end
-
 #show a user
 get '/users/:id' do
 	if session[:user_id] != params[:id].to_i
@@ -31,12 +26,18 @@ get '/users/:id' do
   end
   @user = User.find(params[:id])
   if @user
-    erb :'/users/index'
+    erb :'/users/user_index'
   else
     session[:errors] = @user.errors.full_messages[0]
     redirect '/'
   end
 end
+
+#get edit page
+# get '/users/:id/edit' do
+# 	@user = User.find(params[:id])
+# 	erb :'/users/user_edit'
+# end
 
 #submit user edit
 # put '/users/:id' do

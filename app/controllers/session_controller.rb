@@ -1,3 +1,7 @@
+get '/sessions' do
+  erb :'sessions/sessions_login'
+end
+
 post '/sessions' do
   access = User.authenticate(params[:email], params[:password])
   if access

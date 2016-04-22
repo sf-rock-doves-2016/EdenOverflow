@@ -26,6 +26,15 @@ end
 Comment.create!(body: Arnold.quote, user_id: rand(1..User.all.length), commentable_id: rand(1..20), commentable_type: "Question")
 end
 
+80.times.map do
+  Vote.create!(user_id: rand(1..User.all.length), votable_id: rand(1..Question.all.length), votable_type: "Question" , count: 1)
+end
+
+80.times.map do
+  Vote.create!(user_id: rand(1..User.all.length), votable_id: rand(1..Answer.all.length), votable_type: "Answer" , count: 1)
+end
+
+
 #Examples to traverse of DB
 
 # Question.first.answers.create()

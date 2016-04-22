@@ -1,9 +1,8 @@
-some simple and cool JS you can use for forms
+// some simple and cool JS you can use for forms
 
 $(document).ready(function() {
 
     tabSelectListener();
-
 
 
 });

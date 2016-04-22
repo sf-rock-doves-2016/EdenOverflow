@@ -22,6 +22,7 @@ gem 'pry-byebug'
 gem 'pry'
 
 gem 'shotgun'
+gem 'schwarzefaker'
 
 group :test do
   gem 'faker'

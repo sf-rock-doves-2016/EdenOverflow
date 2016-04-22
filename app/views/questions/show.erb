@@ -15,26 +15,30 @@
 		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
 		<button class="">Down</button>
 	</form>
-	<span><%= @question.body %></span>
+	<p><%= @question.body %></p>
+	<p><%= @author.username %></p>
 	<hr>
 
 
 	<span> <% @question.answers.each do |answer| %>
-		<form action='/votes' method='post'>
+	<form action='/votes' method='post'>
 		<input type='hidden' name='vote[votable_id]' value='<%= @question.id%>'>
 		<input type='hidden' name='vote[votable_type]' value="Answer">
 		<input type='hidden' name='vote[count]' value=1>
 		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
 		<button class="">Up</button>
 	</form>
-		<%= answer.body  %>
-		<form action='/votes' method='post'>
+		<span><%= Vote.where(votable_id: answer.id, votable_type: "Answer").sum(:count) %></span>
+	<form action='/votes' method='post'>
 		<input type='hidden' name='vote[votable_id]' value='<%= @question.id%>'>
 		<input type='hidden' name='vote[votable_type]' value="Answer">
 		<input type='hidden' name='vote[count]' value=-1>
 		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
 		<button class="">Down</button>
 	</form>
+	<p><%= answer.body %></p>
+	<p><%= User.find(answer.user_id).username %></p>
+	</span>
 		<% end %>
 </div>
 

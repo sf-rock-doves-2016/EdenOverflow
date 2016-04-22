@@ -3,7 +3,7 @@
 	<form action='/votes' method='post'>
 		<input type='hidden' name='vote[votable_id]' value='<%= @question.id%>'>
 		<input type='hidden' name='vote[votable_type]' value="Question">
-		<input type='hidden' name='vote[count]' value=1>
+		<input type='hidden' name='vote[count]' value="1">
 		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
 		<button class="">Up</button>
 	</form>
@@ -11,12 +11,19 @@
 	<form action='/votes' method='post'>
 		<input type='hidden' name='vote[votable_id]' value='<%= @question.id%>'>
 		<input type='hidden' name='vote[votable_type]' value="Question">
-		<input type='hidden' name='vote[count]' value=-1>
+		<input type='hidden' name='vote[count]' value="-1">
 		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
 		<button class="">Down</button>
 	</form>
 	<p><%= @question.body %></p>
 	<p><%= @author.username %></p>
+	<p><%= @question.comments.all %></p>
+	<form action='/comments' method='post'>
+		<input type='hidden' name='comment[commentable_id]' value='<%= @question.id%>'>
+		<input type='hidden' name='comment[commentable_type]' value="Question">
+		<input type='hidden' name='comment[user_id]' value='<%= session[:user_id] %>' >
+		<input type='submit' value="New Comment">
+	</form>
 	<hr>
 
 
@@ -24,7 +31,7 @@
 	<form action='/votes' method='post'>
 		<input type='hidden' name='vote[votable_id]' value='<%= @question.id%>'>
 		<input type='hidden' name='vote[votable_type]' value="Answer">
-		<input type='hidden' name='vote[count]' value=1>
+		<input type='hidden' name='vote[count]' value="1">
 		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
 		<button class="">Up</button>
 	</form>
@@ -32,12 +39,19 @@
 	<form action='/votes' method='post'>
 		<input type='hidden' name='vote[votable_id]' value='<%= @question.id%>'>
 		<input type='hidden' name='vote[votable_type]' value="Answer">
-		<input type='hidden' name='vote[count]' value=-1>
+		<input type='hidden' name='vote[count]' value="-1">
 		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
 		<button class="">Down</button>
 	</form>
 	<p><%= answer.body %></p>
 	<p><%= User.find(answer.user_id).username %></p>
+	<p><%= answer.comments.all %></p>
+	<form action='/comments' method='post'>
+		<input type='hidden' name='comment[commentable_id]' value='<%= answer.id%>'>
+		<input type='hidden' name='comment[commentable_type]' value="Answer">
+		<input type='hidden' name='comment[user_id]' value='<%= session[:user_id] %>' >
+		<input type='submit' value="New Comment">
+	</form>
 	</span>
 		<% end %>
 </div>

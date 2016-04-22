@@ -9,5 +9,14 @@ get '/questions/:id' do
 	erb :'questions/show'
 end
 
+get '/questions/new' do 
+	erb :'questions/new'
+end
 
-
+post '/questions' do
+	question = Question.new(params[:question])
+	question.save
+	if question.save
+		redirect '/questions'
+	end
+end

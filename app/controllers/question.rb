@@ -1,15 +1,27 @@
-get '/questions' do 
+get '/questions' do
 	@questions = Question.all
 	erb :'questions/index'
 end
 
-get '/questions/:id' do 
+get '/questions/:id' do
 	@question = Question.find(params[:id])
 	@author = User.find(@question.id)
 	erb :'questions/show'
 end
 
-get '/questions/new' do 
+get '/questions/:id/comments/new' do
+  @type = "Question"
+  @id = params[:id]
+  erb :'comments/new'
+end
+
+get '/answers/:id/comments/new' do
+  @type = "Answer"
+  @id = params[:id]
+  erb :'comments/new'
+end
+
+get '/questions/new' do
 	erb :'questions/new'
 end
 
@@ -20,3 +32,4 @@ post '/questions' do
 		redirect '/questions'
 	end
 end
+

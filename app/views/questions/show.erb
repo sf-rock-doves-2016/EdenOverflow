@@ -25,7 +25,7 @@
 
 	<span> <% @question.answers.each do |answer| %>
 	<form action='/votes' method='post'>
-		<input type='hidden' name='vote[votable_id]' value='<%= @question.id%>'>
+		<input type='hidden' name='vote[votable_id]' value='<%= answer.id%>'>
 		<input type='hidden' name='vote[votable_type]' value="Answer">
 		<input type='hidden' name='vote[count]' value="1">
 		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
@@ -33,7 +33,7 @@
 	</form>
 		<span><%= Vote.where(votable_id: answer.id, votable_type: "Answer").sum(:count) %></span>
 	<form action='/votes' method='post'>
-		<input type='hidden' name='vote[votable_id]' value='<%= @question.id%>'>
+		<input type='hidden' name='vote[votable_id]' value='<%= answer.id%>'>
 		<input type='hidden' name='vote[votable_type]' value="Answer">
 		<input type='hidden' name='vote[count]' value="-1">
 		<input type='hidden' name='vote[user_id]' value='<%= session[:user_id] %>' >
@@ -59,6 +59,8 @@
 	  <br>
 	  <input type="submit" class="button" value="Submit"></input>
   </form>
+
+  <%= @errors if @errors %>
 
 </div>
 

@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
 	validates :username, :email, :password_hash, presence: true
 	validates :email, uniqueness: true
-	has_many :templates
+	has_many :questions
+	has_many :answers
+	has_many :comments
+	has_many :votes
 
 
 	include BCrypt

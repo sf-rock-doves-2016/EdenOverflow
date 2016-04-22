@@ -2,8 +2,8 @@
 	<input type='hidden' name='question[user_id]' value='<%=session[:user_id] %>'>
   <label for="question_text">Your question:</label>
   <br>
-  <textarea name='question[title]' id="question_text">Title</textarea>
-  <textarea name='question[body]' id="question_text" rows="5" cols="75"></textarea>
+  <textarea name='question[title]' id="question_text" rows="2" cols="75" placeholder="Title"></textarea><br>
+  <textarea name='question[body]' id="question_text" rows="5" cols="75" placeholder="Description"></textarea>
   <br>
   <br>
   <input type="submit" class="button" value="Submit"></input>

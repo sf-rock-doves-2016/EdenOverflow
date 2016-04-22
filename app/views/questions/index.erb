@@ -25,7 +25,7 @@
 
 
 <div class="content" id="most_commented">
-    <% @questions.each do |question| %>
+    <% @sorted_questions_comments.each do |question| %>
       <p><a href="/questions/<%=question.id %>"><%= question.title %></a></p>
       <p>Answers: <%= question.answers.length  %></p>
       <p>Votes: <%= question.votes  %></p>

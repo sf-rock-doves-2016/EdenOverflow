@@ -2,5 +2,17 @@
 
 
 	<%if @user %>
-		"Hello"
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+ <div class="container">
+    <div class="fb-profile">
+        <img align="left" class="fb-image-lg" src="http://i.huffpost.com/gen/1463555/images/o-URBAN-AGRICULTURE-facebook.jpg" alt="Profile image example"/>
+        <img align="left" class="fb-image-profile thumbnail" src="http://www.bizreport.com/images/shutterstock/2015/07/salad_262697651-thumb-380xauto-3830.jpg" alt="Profile image example"/>
+        <div class="fb-profile-text">
+            <h1><%= @user.username.upcase %></h1>
+            <p>Garden Master</p>
+        </div>
+    </div>
+  </div> <!-- /container -->
+
+
 	<%end %>

@@ -1,7 +1,5 @@
 
-
-
-	<%if @user %>
+<%if @user %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
  <div class="container">
     <div class="fb-profile">
@@ -15,4 +13,33 @@
   </div> <!-- /container -->
 
 
-	<%end %>
+    <div class="container">
+    <div class="row">
+    <div class="well">
+    <h1 class="text-center">Your Questions</h1>
+
+    <% @questions.each do |question|  %>
+        <div class="list-group">
+          <a href="#" class="list-group-item active">
+                    <h2 class="list-group-item-heading"><%= question.title %> </h2>
+                    <div class="col-md-3">
+                    <% answers_count = question.answers.count %>
+                    <h2><%= answers_count %> <small> answers </small></h2>
+                    </div>
+                    <div class="col-md-3">
+                    <% vote_count = Vote.where(votable_id: "#{question.id}", votable_type: "Question").count  %>
+                    <h2><%= vote_count %> <small> votes </small></h2>
+                    </div>
+                    <div class="col-md-3">
+                    <% rating =Vote.where(votable_id: 1, votable_type: "Question").sum(:count)%>
+                    <h2><%= rating %> <small> rating </small></h2>
+                    </div>
+          </a>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <% end %>
+
+<%end %>

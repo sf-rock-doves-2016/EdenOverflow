@@ -2,11 +2,12 @@ require 'Faker'
 require 'schwarzefaker'
 
 20.times.map do
+
   User.create!(username: Arnold.villain, email: Faker::Internet.email, password: "1234")
 end
 
-
 User.create(username: "EricDellAri", email: "edella2@gmail.com", password: "1234")
+
 
 Question.create(title: "Basic Crud template made for DBC students", body: "Feel free to add to this as you will.  This is a skeleton that you can use on most CRUD apps. There are helper methods written in this as well to make checking which user is currently logged in, if the user should have access to edit/delete a post etc.  Message me on slack or email if you have questions", user_id: 21)
 

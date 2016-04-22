@@ -31,3 +31,12 @@ body
     width: 20%;
 }
 }
+
+a.list-group-item {
+    height:auto;
+    min-height:100px;
+}
+a.list-group-item.active small {
+    color:#fff;
+}
+

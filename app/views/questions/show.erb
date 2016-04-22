@@ -23,7 +23,6 @@
 	<p><a href="/questions/<%= @question.id %>/comments/new">New Comment</a></p>
 	<hr>
 
-
 	<span> <% @question.answers.each do |answer| %>
 	<form action='/votes' method='post'>
 		<input type='hidden' name='vote[votable_id]' value='<%= @question.id%>'>
@@ -47,6 +46,20 @@
 	<% end %>
 	<p><a href="/answers/<%= answer.id %>/comments/new">New Comment</a></p>
 	</span>
+
 	<% end %>
+
+	<form id="new-answer-form" method='post' action='/answers'>
+		<input type='hidden' name='answer[user_id]' value='<%=session[:user_id] %>'>
+		<input type='hidden' name='answer[question_id]' value='<%= @question.id%>'>
+	  <label for="answer_text">Your Answer:</label>
+	  <br>
+	  <textarea name='answer[body]' id="answer_text" rows="5" cols="75"></textarea>
+	  <br>
+	  <br>
+	  <input type="submit" class="button" value="Submit"></input>
+  </form>
+
+>>>>>>> master
 </div>
 

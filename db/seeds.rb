@@ -3,15 +3,8 @@ require 'schwarzefaker'
 
 20.times.map do
 
-  User.create!(username: Faker::Name.name, email: Faker::Internet.email, password: "123456789")
-end
-
-
-User.create(username: "Eric Dell'Aringa", email: "edella2@gmail.com", password: "123456789")
-
   User.create!(username: Arnold.villain, email: Faker::Internet.email, password: "1234")
 end
-
 
 User.create(username: "EricDellAri", email: "edella2@gmail.com", password: "1234")
 
